@@ -1,0 +1,18 @@
+#define MIC_PIN 2
+#define LED_PIN 13
+
+void setup() {
+    pinMode(MIC_PIN, INPUT);
+    pinMode(LED_PIN, OUTPUT);
+    Serial.begin(9600);
+}
+
+void loop() {
+    int soundDetected = digitalRead(MIC_PIN);
+    if (soundDetected == HIGH) {
+        Serial.println("Loud sound detected!");
+        digitalWrite(LED_PIN, HIGH); // Turn on LED
+        delay(50); // Keep LED on for 500ms
+        digitalWrite(LED_PIN, LOW); // Turn off LED
+    }
+}
